@@ -4,6 +4,80 @@
 :root {
   /* --background: #ffffff;
   --foreground: #171717; */
+  --fontSize-extraSmall: 10;
+  --fontSize-small: 12;
+  --fontSize-p: 14;
+  --fontSize-h6: 17;
+  --fontSize-h5: 20;
+  --fontSize-h4: 24;
+  --fontSize-h3: 29;
+  --fontSize-h2: 35;
+  --fontSize-h1: 42;
+
+  /* Black colors */
+  --blackColor-000: #FFFFFF;
+  --blackColor-100: #D2D2D2;
+  --blackColor-200: #A5A5A5;
+  --blackColor-300: #777777;
+  --blackColor-400: #4A4A4A;
+  --blackColor-500: #1D1D1D;
+  --blackColor-600: #141414;
+  --blackColor-700: #141414;
+
+  /* Blue Colors */
+  --blueColor-000: var(--blackColor-000);
+  --blueColor-100: #D9DFFC;
+  --blueColor-200: #B4C0F8;
+  --blueColor-300: #8EA0F5;
+  --blueColor-400: #6981F1;
+  --blueColor-500: #4361EE;
+  --blueColor-600: #283A8F;
+  --blueColor-700: #1B275F;
+  --blueColor-800: #0D1330;
+
+  /* Red Colors */
+  --redColor-100: #FBEAEA;
+  --redColor-200: #F2C1C1;
+  --redColor-300: #E99797;
+  --redColor-400: #DC5959;
+  --redColor-500: #D32F2F;
+  --redColor-600: #A92626;
+  --redColor-700: #6A1818;
+  --redColor-800: #2A0909;
+
+  /* Original Colors */
+  --blackColor: var(--blackColor-500);
+  --blueColor: var(--blueColor-500);
+  --redColor: var(--redColor-500);
+  --whiteColor: var(--blackColor-000);
+
+  /* Text Colors */
+  --textColor-primary: var(--blackColor-500);
+  --textColor-secondary: var(--blackColor-400);
+  --textColor-tertiary: var(--blackColor-300);
+  --textColor-disables: var(--blackColor-200);
+  --textColor-error: var(--redColor-500);
+
+  /* Primary Colors */
+  --primaryColor-000: var(--blackColor-000);
+  --primaryColor-100: var(--blackColor-100);
+  --primaryColor-200: var(--blackColor-200);
+  --primaryColor-300: var(--blackColor-300);
+  --primaryColor-400: var(--blackColor-400);
+  --primaryColor-500: var(--blackColor-500);
+  --primaryColor-600: var(--blackColor-600);
+  --primaryColor-700: var(--blackColor-700);
+  
+  /* Secondary Colors */
+  --secondaryColor-000: var(--blueColor-000);
+  --secondaryColor-100: var(--blueColor-100);
+  --secondaryColor-200: var(--blueColor-200);
+  --secondaryColor-300: var(--blueColor-300);
+  --secondaryColor-400: var(--blueColor-400);
+  --secondaryColor-500: var(--blueColor-500);
+  --secondaryColor-600: var(--blueColor-600);
+  --secondaryColor-700: var(--blueColor-700);
+  --secondaryColor-800: var(--blueColor-800);
 }
 
 @theme inline {
@@ -16,7 +90,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* --background: #0a0a0a;
-    --foreground: #ededed; */
+    --foreground: #ededed; */   
   }
 }
 
