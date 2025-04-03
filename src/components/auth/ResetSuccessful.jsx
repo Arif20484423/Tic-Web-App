@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const ResetSuccessful = () => {
   return (
@@ -12,7 +12,7 @@ const ResetSuccessful = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ResetSuccessful
+export default ResetSuccessful;
