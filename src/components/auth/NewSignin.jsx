@@ -12,7 +12,7 @@ const NewSignin = () => {
     return(
         <>
         <div className="*:font-inter">
-            <div className=" flex flex-col pt-[20px] pb-[20px] pl-[50px] pr-[50px] gap-y-[50px] bg-[    ]">
+            <div className=" flex flex-col pt-[20px] pb-[20px] pl-[50px] pr-[50px] gap-y-[50px] bg-[var(--primaryColor-050)]">
                 <div className=" flex flex-col gap-y-[10px]">
                     <div className=" text-[var(--fontSize-h3)] text-[var(--textColor-primary)] font-extrabold">
                         Welcome
