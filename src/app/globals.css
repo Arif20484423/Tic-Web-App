@@ -16,6 +16,7 @@
 
   /* Black colors */
   --blackColor-000: #FFFFFF;
+  --blackColor-050: #F8F8F8;
   --blackColor-100: #D2D2D2;
   --blackColor-200: #A5A5A5;
   --blackColor-300: #777777;
@@ -57,9 +58,11 @@
   --textColor-tertiary: var(--blackColor-300);
   --textColor-disables: var(--blackColor-200);
   --textColor-error: var(--redColor-500);
+  --textColor-white: var(var(--blackColor-000));
 
   /* Primary Colors */
   --primaryColor-000: var(--blackColor-000);
+  --primaryColor-050: var(--blackColor-050);
   --primaryColor-100: var(--blackColor-100);
   --primaryColor-200: var(--blackColor-200);
   --primaryColor-300: var(--blackColor-300);
