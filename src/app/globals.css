@@ -4,15 +4,15 @@
 :root {
   /* --background: #ffffff;
   --foreground: #171717; */
-  --fontSize-extraSmall: 10;
-  --fontSize-small: 12;
-  --fontSize-p: 14;
-  --fontSize-h6: 17;
-  --fontSize-h5: 20;
-  --fontSize-h4: 24;
-  --fontSize-h3: 29;
-  --fontSize-h2: 35;
-  --fontSize-h1: 42;
+  --fontSize-extraSmall: 10px;
+  --fontSize-small: 12px;
+  --fontSize-p: 14px;
+  --fontSize-h6: 17px;
+  --fontSize-h5: 20px;
+  --fontSize-h4: 24px;
+  --fontSize-h3: 29px;
+  --fontSize-h2: 35px;
+  --fontSize-h1: 42px;
 
   /* Black colors */
   --blackColor-000: #FFFFFF;
