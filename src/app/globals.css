@@ -58,7 +58,7 @@
   --textColor-tertiary: var(--blackColor-300);
   --textColor-disables: var(--blackColor-200);
   --textColor-error: var(--redColor-500);
-  --textColor-white: var(var(--blackColor-000));
+  --textColor-white: var(--blackColor-000);
 
   /* Primary Colors */
   --primaryColor-000: var(--blackColor-000);
