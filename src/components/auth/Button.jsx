@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
-const Button = ({children, type, ...props}) => {
+const Button = ({children, type = "button", ...props}) => {
     return(
         <>
         <button 
-        type={type}
+        type = {type}
         {...props}
         className=" w-[215px] h-[30px] bg-[var(--primaryColor-500)] border-0 rounded-[30px] text-[12px] text-[var(--textColor-white)] 
         hover:text-[14px]

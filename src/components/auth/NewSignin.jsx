@@ -21,8 +21,8 @@ const NewSignin = () => {
         <div className="*:font-inter">
             <form
             onSubmit={handleSubmit}
-            className=" flex flex-col py-[20px] px-[50px] gap-y-[50px] border-t-[var(--primaryColor-500)] border-t-[3px] bg-[var(--primaryColor-050)]">
-                <div className=" flex flex-col gap-y-0 justify-center">
+            className=" flex flex-col py-[20px] justify-center items-center px-[50px] gap-y-[50px] border-t-[var(--primaryColor-500)] border-t-[3px] bg-[var(--primaryColor-050)]">
+                <div className=" flex flex-col justify-center items-center gap-y-0 ">
                     <div className="flex justify-center p-0 m-0 font-extrabold text-[35px] ">
                         Welcome
                     </div>
