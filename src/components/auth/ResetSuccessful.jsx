@@ -1,18 +1,20 @@
+"use client"
 import React from "react";
+import Button from "./Button";
 
-const ResetSuccessful = () => {
-  return (
-    <div className="flex items-center justify-center h-screen bg-white-100">
-      <div className="text-center space-y-[25px]">
-        <h2 className="text-[30px] font-extrabold text-black">
-          Password Reset Successfully
-        </h2>
-        <button className="w-[215px] text-[12px] font-semibold tracking-[0.05em] px-[20px] py-[6px] text-white bg-black rounded-[35px]">
-          Back to login
-        </button>
-      </div>
-    </div>
-  );
-};
-
+const ResetSuccessful = () =>{
+    const clickHandler = () =>{
+        console.log("button clicked");
+    }
+    return (
+        <>
+        <div className="flex justify-center items-center w-full h-full">
+            <div className="flex flex-col justify-center items-center gap-y-[25px] p-0 m-0">
+                <div className=" text-[29px] font-extrabold text-[var(--textColor-primary)]">Password Reset Successfully</div>
+                <Button onClick={clickHandler}>Back to login</Button>
+            </div>
+        </div>
+        </>
+    )
+}
 export default ResetSuccessful;

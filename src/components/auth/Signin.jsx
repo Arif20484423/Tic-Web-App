@@ -1,64 +1,47 @@
 "use client";
-
-import React from "react";
-import { useState } from "react";
+import React, {useState} from "react";
+import InputGroup from "./InputGroup";
+import Button from "./Button";
 
 const Signin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    console.log("reset password clicked");
-  };
-
-  const forgotPasswordhandler = () => {
-    console.log("Forgot password clicked")
-  }
-
-  return (
-    <div className="*:font-inter">
-      <div className="bg-gray-100 w-[380px] p-3 shadow-md border-t-[5px]">
-        <div className="flex justify-center flex-col items-center">
-          <h2 className="text-3xl m-4 mb-3 font-inter font-bold text-black text-center">
-            Welcome
-          </h2>
-          <p className=" text-center mb-4 w-[180px] text-[14px]">
-            Login to continue.
-          </p>
+    const [emailState, setEmail] = useState("");
+    const [passwordState, setPassword] = useState("");
+    const inputs = [
+        {name: "Email", value: emailState, type: "email", setValue: setEmail},
+        {name: "Password", value: passwordState, type: "password", setValue: setPassword}
+    ];
+    const handleSubmit = ()=>{
+        console.log("submit button clicked")
+    }
+    const forgotPasswordHandler = () =>{
+        console.log("Forgot password clicked");
+    }
+    return(
+        <>
+        <div className="*:font-inter">
+            <form
+            onSubmit={handleSubmit}
+            className=" flex flex-col py-[20px] justify-center items-center px-[50px] gap-y-[50px] border-t-[var(--primaryColor-500)] border-t-[3px] bg-[var(--primaryColor-050)]">
+                <div className=" flex flex-col justify-center items-center gap-y-0 ">
+                    <div className="flex justify-center p-0 m-0 font-extrabold text-[35px] ">
+                        Welcome
+                    </div>
+                    <div className="flex justify-center p-0 m-0 text-[12px] text-[var(--textColor-secondary)] tracking-wide">
+                        Please login to continue
+                    </div>
+                </div>
+                <InputGroup inputs = {inputs}/>
+                <Button type="submit" onClick={handleSubmit}>Login</Button>
+                <div
+                className="flex justify-center text-[12px] text-[var(--textColor-primary)] 
+                hover:cursor-pointer"
+                onClick={forgotPasswordHandler}
+                >
+                    Forgot your password?
+                </div>
+            </form>
         </div>
-
-        <div className=" flex justify-center flex-col items-center mt-10">
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-[80%] p-2 pl-0 border-b mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-[80%] p-2 pl-0 border-b mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            className="w-[80%] mt-15 m-auto bg-black py-2 text-white rounded-full font-semibold hover:bg-gray-900 transition mb-5"
-            onClick={handleLogin}
-          >
-            Login
-          </button>
-          <p 
-            className=" m-auto mt-[50px] text-[var(--fontSize-small)] text-[var(--textColor-primary)] hover: cursor-pointer"
-            onClick={forgotPasswordhandler}
-          >
-            Forgot your password?
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
+        </>
+    )
+}
 export default Signin;
