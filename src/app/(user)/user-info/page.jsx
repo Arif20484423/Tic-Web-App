@@ -1,11 +1,14 @@
 "use client"
 import React, {useState} from 'react'
 import Input from '@/components/user-info/Input'
+import Button from '@/components/user-info/Button'
 const page = () => {
-    const [email, setEmail] = useState("");
+    const clickhandler = () => {
+        console.log("Button clicked")
+    }
   return (
     <>
-      <Input size="large" label="Enter Email" priority="required" type="email" placeholder="Enter email here" value={email} setValue={setEmail}></Input>
+      <Button size="large" variant="filled" onClick={clickhandler}>Click here!</Button>
     </>
   )
 }
