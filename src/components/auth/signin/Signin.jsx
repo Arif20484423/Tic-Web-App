@@ -19,7 +19,7 @@ const Signin = () => {
         e.preventDefault(); 
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
+                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/login`,
                 {
                     rollNumber: emailState,
                     password: passwordState,
