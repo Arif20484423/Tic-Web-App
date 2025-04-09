@@ -11,7 +11,7 @@ const Input = ({size, label, priority, type, placeholder = "Enter details", valu
     }
     return (
         <>
-        <div className={`flex flex-col justify-center items-center ${sizeClasses[size]}`}>
+        <div className={`flex flex-col justify-center items-center ${sizeClasses[size]} `}>
             <div className="flex flex-row w-full justify-between">
                 <span className=" text-[12px] text-[var(--textColor-secondary)] font-medium">{label}</span>
                 <span className={`text-[10px] ${priorityColor[priority]}`}>{priority}</span>
