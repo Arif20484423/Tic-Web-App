@@ -13,13 +13,13 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
 
     return (
         <>
-            <div className={`flex flex-col justify-center items-center ${sizeClasses[size]} `}>
+            <div className={`flex w-full w-max[350px] flex-col justify-center items-center ${sizeClasses[size]} `}>
                 <div className="flex flex-row w-full justify-between">
                     <span className="text-[12px] text-[var(--textColor-secondary)] font-medium">{label}</span>
                     <span className={`text-[10px] ${priorityColor[priority]}`}>{priority}</span>
                 </div>
-                <div className="flex justify-between w-[80%] *:text-[12px] m-3">
-                    <label className="flex items-center">
+                <div className="flex flex-col sm:flex-row  justify-between w-[80%] *:text-[12px] m-3">
+                    <label className="flex items-center w-max[100px]">
                         <input
                             type="radio"
                             name="gender"
@@ -31,7 +31,7 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                         Male
                     </label>
 
-                    <label className="flex items-center">
+                    <label className="flex items-center w-max[100px]">
                         <input
                             type="radio"
                             name="gender"
@@ -42,7 +42,7 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                         />
                         Female
                     </label>
-                    <label className="flex items-center">
+                    <label className="flex items-center w-max[100px]">
                         <input
                             type="radio"
                             name="gender"

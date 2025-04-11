@@ -149,7 +149,8 @@ const UserDetails = () => {
         value={resume}
         setValue={setResume}
       />
-      <div className="grid grid-cols-2 w-[350px] gap-13">
+      {/* <div className="grid grid-cols-2 w-[350px] gap-13"> */}
+      <div className="flex flex-col sm:flex-row w-full w-max[350px] justify-between gap-[15px]">
         <Input
           size="small"
           label="10th"
@@ -169,7 +170,8 @@ const UserDetails = () => {
           setValue={setTwelth}
         />
       </div>
-      <div className="grid grid-cols-2 w-[350px] gap-13">
+      {/* <div className="grid grid-cols-2 w-[350px] gap-13"> */}
+      <div className="flex flex-col sm:flex-row w-full w-max[350px] justify-between gap-[15px]">
         <Input
           size="small"
           label="UG"
@@ -190,7 +192,8 @@ const UserDetails = () => {
         />
       </div>
 
-      <div className="grid grid-cols-2 w-[350px] gap-[50px]">
+      {/* <div className="grid grid-cols-2 w-[350px] gap-[50px]"> */}
+      <div className="flex flex-col sm:flex-row w-full w-max[350px] items-center gap-[15px]">
         <Button size="medium" variant="filled" children type="button">
           Save Changes
         </Button>
