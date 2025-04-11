@@ -1,63 +1,38 @@
-"use client";
-
-import React from "react";
-import { useState } from "react";
-
-const ResetPassword = () => {
-  const [email, setEmail] = useState("");
-  const [oldPassword, setoldPassword] = useState("");
-  const [newPassword, setnewPassword] = useState("");
-
-  const handleResetPassword = () => {
-    console.log("reset password clicked", email);
-  };
-
-  return (
-    <div className="*:font-inter">
-      <div className="bg-gray-100 w-[380px] p-3 shadow-md border-t-[5px]">
-        <div className="flex justify-center flex-col items-center">
-          <h2 className="text-3xl m-4 mb-3 font-inter font-bold text-black text-center">
-            Forgot Password!
-          </h2>
-          <p className=" text-center mb-4 w-[180px] text-[14px]">
-            Enter email id and new password to reset
-          </p>
+"use client"
+import React, {useState} from "react";
+import InputGroup from "./InputGroup";
+import Button from "./Button";
+const ResetPassword = () =>{
+    const [emailState, setEmail] = useState("");
+    const [oldPasswordState, setOldPassword] = useState("");
+    const [newPasswordState, setNewPassword] = useState("");
+    const inputs = [
+        {name: "Email", value: emailState, type: "email", setValue: setEmail},
+        {name: "Old Password", value: oldPasswordState, type: "password", setValue: setOldPassword},
+        {name: "New Password", value: newPasswordState, type: "password", setValue: setNewPassword}
+    ];
+    const handleSubmit = ()=>{
+        console.log("submit button clicked")
+    }
+    return(
+        <>
+        <div className="*:font-inter">
+            <form
+            onSubmit={handleSubmit}
+            className=" flex flex-col justify-center items-center py-[20px] px-[50px] gap-y-[50px] border-t-[var(--primaryColor-500)] border-t-[3px] bg-[var(--primaryColor-050)]">
+                <div className=" flex flex-col gap-y-0 justify-center items-center">
+                    <div className="flex justify-center p-0 m-0 font-extrabold text-[24px] ">
+                        Forgot Password!
+                    </div>
+                    <div className="flex justify-center max-w-[215px] p-0 m-0 text-[12px] text-[var(--textColor-secondary)] tracking-wide">
+                        Enter email id and new password to reset
+                    </div>
+                </div>
+                <InputGroup inputs = {inputs}/>
+                <Button type="submit" onClick={handleSubmit}>Reset Password</Button>
+            </form>
         </div>
-
-        <div className=" flex justify-center flex-col items-center mt-10">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-[80%] p-2 pl-0 border-b mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="Old password"
-            className="w-[80%] p-2 pl-0 border-b mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={oldPassword}
-            onChange={(e) => setoldPassword(e.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="New password"
-            className="w-[80%] p-2 pl-0 border-b mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={newPassword}
-            onChange={(e) => setnewPassword(e.target.value)}
-          />
-          <button
-            className="w-[80%] mt-15 m-auto bg-black py-2 text-white rounded-full font-semibold hover:bg-gray-900 transition mb-5"
-            onClick={handleResetPassword}
-          >
-            Reset Password
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
+        </>
+    )
+}
 export default ResetPassword;
