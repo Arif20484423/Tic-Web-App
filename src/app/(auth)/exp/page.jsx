@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import UserDetails from "@/components/user-details/UserDetails";
-
+import DataTable from "@/components/user-details/DataTable";
+import students from "@/components/user-details/student";
 import Input from "@/components/user-details/Input";
 const page = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,8 @@ const page = () => {
     //     setValue={setEmail}
     //   ></Input>
     // </>
-    <UserDetails />
+    // <UserDetails />
+    <DataTable students={students} />
   );
 };
 export default page;
