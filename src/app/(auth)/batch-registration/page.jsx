@@ -6,7 +6,7 @@ const page = () => {
   return (
     <>
       {/* <Signin /> */}
-      <ProtectedPage>
+      <ProtectedPage allowedRoles={["Tic","Tap"]}>
         <Registration />
       </ProtectedPage>
     </>

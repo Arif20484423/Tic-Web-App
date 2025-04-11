@@ -1,24 +1,23 @@
- import { useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { useAuth } from "@/context/auth.context";
 
-const ProtectedPage = ({children}) => {
-     const router = useRouter();
-    const getRoleOfUser = () => {   
-        const res = axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/role`);
-        return res.Role;
-    }
+const ProtectedRoute = ({ children,allowedRoles=[]}) => {
+    const router = useRouter();
+    const { user, loading } = useAuth();
     useEffect(() => {
-        const role = getRoleOfUser();
-        if(role != "STUDENT" && role != "TIC"){
-            router.push("/signin");
+        if (!loading) {
+            if (!user || (allowedRoles.length > 0 && !allowedRoles.includes(user.role))) {
+                router.push("/signin");
+            }
         }
-    }, []);
-    return (
-        <div>
-            {children}
-        </div>
-    );
+    }, [user, loading, allowedRoles, router]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return <>{children}</>;
 };
 
-export default ProtectedPage;
+export default ProtectedRoute;

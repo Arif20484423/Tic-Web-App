@@ -2,57 +2,46 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [authToken, setAuthToken] = useState(null);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
-        const token = Cookies.get("authToken");
-        if (token) {
-            setAuthToken(token);
-            fetchUserDetails(token);
-        }
-        setLoading(false);
+        fetchUserDetails();
     }, []);
 
-    const fetchUserDetails = async (token) => {
+    const fetchUserDetails = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/details`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+             const response = await axios(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/details`, {
+                withCredentials: true,
             });
-            if (response.ok) {
-                const data = await response.json();
-                setUser(data.data);
+            if (response) {
+                setUser(response.data.data);
+                setLoading(false);
             } else {
+                setLoading(false);
+                router.push("/signin")
                 console.error("Failed to fetch user details");
             }
         } catch (error) {
-            console.error("Error fetching user details:", error);
+            setLoading(false);
+            console.error("Error fetching user details:", error.message);
         }
     };
 
-    const login = (token) => {
-        setAuthToken(token);
-        fetchUserDetails(token);
+    const login = () => {
+        fetchUserDetails();
         router.push("/");
     };
 
-    const logout = () => {
-        Cookies.remove("authToken"); 
-        setAuthToken(null);
-        setUser(null);
-        router.push("/signin");
-    };
-
+    
     return (
-        <AuthContext.Provider value={{ authToken, user, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, login, loading }}>
             {children}
         </AuthContext.Provider>
     );
