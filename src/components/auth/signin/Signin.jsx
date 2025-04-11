@@ -4,9 +4,10 @@ import InputGroup from "../InputGroup";
 import Button from "../Button";
 import axios from "axios";
 import  { useRouter } from "next/navigation"
-
+import { useAuth } from "@/context/auth.context"
 const Signin = () => {
     const router = useRouter()
+    const {login} = useAuth();
     const [emailState, setEmail] = useState("");
     const [passwordState, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(""); 
@@ -19,22 +20,23 @@ const Signin = () => {
         e.preventDefault(); 
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
+                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/login`,
                 {
                     rollNumber: emailState,
                     password: passwordState,
+                },
+                {
+                    withCredentials: true,
                 }
             );
-            const { token } = response.data;
-            localStorage.setItem("authToken", token);  
-            console.log("Login successful:", response.data);
+            login();
+             console.log("Login successful:", response.data);
             alert("Login successful!");
             router.push("/");
             
         } catch (error) {
-            console.error("Error during login:", error.response?.data || error.message);
-            setErrorMessage(error.response?.data?.message || "An error occurred. Please try again.");
-        }
+            console.error("Error during login:", error);
+         }
     };
 
     const forgotPasswordHandler = () => {
