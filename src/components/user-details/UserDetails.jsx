@@ -23,7 +23,7 @@ const UserDetails = () => {
   const [resume, setResume] = useState("");
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4 w-[80%] m-auto bg-[var(--blackColor-050)] ">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 p-4 w-[80%] m-auto bg-[var(--blackColor-050)] ">
       <Input
         size="large"
         label="Name"

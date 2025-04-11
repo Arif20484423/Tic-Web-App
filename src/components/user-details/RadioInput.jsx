@@ -18,7 +18,7 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                     <span className="text-[12px] text-[var(--textColor-secondary)] font-medium">{label}</span>
                     <span className={`text-[10px] ${priorityColor[priority]}`}>{priority}</span>
                 </div>
-                <div className="flex flex-col sm:flex-row  justify-between w-[80%] *:text-[12px] m-3">
+                <div className="flex flex-col sm:flex-row  justify-between w-full max-w-[350px] *:text-[12px] m-3">
                     <label className="flex items-center w-max[100px]">
                         <input
                             type="radio"
