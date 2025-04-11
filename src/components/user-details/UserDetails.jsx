@@ -21,6 +21,7 @@ const UserDetails = () => {
   const [ug, setUg] = useState("");
   const [pg, setPg] = useState("");
   const [resume, setResume] = useState("");
+  const [gender,setGender]=useState("");
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4 w-[80%] m-auto bg-[var(--blackColor-050)] ">
@@ -91,8 +92,8 @@ const UserDetails = () => {
         size="large"
         label="Gender"
         priority="required"
-        value={collegeEmail}
-        setValue={setCollegeEmail}
+        value={gender}
+        setValue={setGender}
       />
       <Input
         size="large"
