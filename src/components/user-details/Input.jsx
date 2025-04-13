@@ -2,8 +2,8 @@
 import React from "react";
 const Input = ({size, label, priority, type, placeholder = "Enter details", value, setValue}) =>{
     const sizeClasses = {
-        large: "w-full w-[350px]",
-        small: "w-full w-[150px]"
+        large: "w-full max-w-[350px]",
+        small: "w-full max-w-[150px]"
     }
     const priorityColor = {
         required: "text-amber-600",
