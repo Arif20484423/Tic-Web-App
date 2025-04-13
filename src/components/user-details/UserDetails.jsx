@@ -22,9 +22,10 @@ const UserDetails = () => {
   const [ug, setUg] = useState("");
   const [pg, setPg] = useState("");
   const [resume, setResume] = useState("");
+  const [gender,setGender]=useState("");
 
   return (
-    <div className="flex flex-col w-full min-w-[200px] py-[25px] gap-y-[20px] items-center">
+      <div className="flex flex-col w-full min-w-[200px] py-[25px] gap-y-[20px] items-center">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-[25px] p-4 w-max  bg-[var(--blackColor-050)] ">
         <Input
           size="large"

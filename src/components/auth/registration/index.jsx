@@ -29,7 +29,7 @@ const Registration = () => {
 
         try {
             const res = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/batchentry`,
+                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/batchentry`,
                 formData,
                 {
                     headers: {
