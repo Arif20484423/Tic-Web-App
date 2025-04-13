@@ -10,6 +10,7 @@
 ## Development Rules 
 
 ``` bash
+
 Variables         - camelCase   
 Functions         - camelCase  
 React Components  - PascalCase  
