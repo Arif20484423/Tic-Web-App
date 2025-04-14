@@ -1,10 +1,12 @@
-import React from 'react'
-import ResetPassword from '@/components/auth/ResetPassword'
+import React, { Suspense } from "react";
+import ResetPassword from "@/components/auth/ResetPassword";
 
 const page = () => {
   return (
-    <ResetPassword/>
-  )
-}
+    <Suspense>
+      <ResetPassword />
+    </Suspense>
+  );
+};
 
-export default page
+export default page;
