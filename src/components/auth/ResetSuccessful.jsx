@@ -1,10 +1,12 @@
 "use client"
 import React from "react";
 import Button from "./Button";
+import { useRouter } from "next/navigation";
 
 const ResetSuccessful = () =>{
+    const router = useRouter()
     const clickHandler = () =>{
-        console.log("button clicked");
+        router.push("/signin")
     }
     return (
         <>

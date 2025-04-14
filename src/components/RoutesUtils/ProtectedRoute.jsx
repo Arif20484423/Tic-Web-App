@@ -1,26 +1,19 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/app.context";
+import { AppContext } from "@/context/app.context";
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   const router = useRouter();
-  const { user, loading } = useAuth();
-  useEffect(() => {
-    if (!loading) {
-      if (
-        !user ||
-        (allowedRoles.length > 0 && !allowedRoles.includes(user.role))
-      ) {
-        router.push("/signin");
-      }
+  const { user } = useContext(AppContext);
+  if (user) {
+    if (allowedRoles.includes(user.role)) {
+      return <>{children}</>;
+    } else {
+     return <div>Access denied</div>;
     }
-  }, [user, loading, allowedRoles, router]);
-
-  if (loading) {
-    return <div>Loading...</div>;
+  } else {
+    return <div>Loading</div>;
   }
-
-  return <>{children}</>;
 };
 
 export default ProtectedRoute;

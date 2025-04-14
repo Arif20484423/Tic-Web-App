@@ -40,7 +40,7 @@ const Signin = () => {
       );
       console.log("Login successful:", response.data);
       alert("Login successful!");
-      router.push("/");
+      router.push("/dashboard");
     } catch (error) {
       if (error.response) {
         console.error("Error during login:", error.response.data.message);
@@ -51,7 +51,7 @@ const Signin = () => {
   };
 
   const forgotPasswordHandler = () => {
-    console.log("Forgot password clicked");
+    router.push("/forget-password")
   };
 
   return (
