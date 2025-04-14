@@ -10,7 +10,7 @@ const ResetPassword = () => {
   const [newPasswordState, setNewPassword] = useState("");
   const [confirmPasswordState, setConfirmPassword] = useState("");
   const params = useSearchParams();
-  console.log(params.get("user"),params.get("token"))
+  
   const inputs = [
     
     {
