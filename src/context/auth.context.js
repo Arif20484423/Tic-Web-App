@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         console.error("Failed to fetch user details");
       }
     } catch (error) {
-        console.log(response);
+        console.log(error);
       setLoading(false);
       if (error.response) {
         if (error.response.data.redirect) {
