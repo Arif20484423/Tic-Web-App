@@ -35,7 +35,13 @@ const Signin = () => {
             router.push("/");
             
         } catch (error) {
-            console.error("Error during login:", error);
+            if(error.response){
+                console.error("Error during login:", error.response.data.message)
+            }
+            else{
+                console.error("Error during login:", error);
+            }
+            
          }
     };
 
