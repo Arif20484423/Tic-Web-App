@@ -1,4 +1,5 @@
 "use client"
+
 import React from "react"
 const Data = ({size="medium", type="regular", children}) => {
     const sizeClasses = {
