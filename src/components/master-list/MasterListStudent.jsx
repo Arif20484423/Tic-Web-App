@@ -14,7 +14,7 @@ const MasterListStudent = () => {
 
   return (
     <div className="flex flex-col items-center p-[50px]">
-      <form className="flex flex-col gap-[50px] w-full  sm:min-w-[350px] sm:w-full sm:max-w-[450px] md:w-full md:min-w-[500px] md:max-w-[1000px] bg-[var(--blackColor-050)]">
+      <form className="flex flex-col gap-[25px] w-full  sm:min-w-[350px] sm:w-full sm:max-w-[450px] md:w-full md:min-w-[500px] md:max-w-[1000px] bg-[var(--blackColor-050)]">
         <div className="flex flex-col justify-center items-center md:flex-row gap-[25px]">
           <Input
             size="large"
