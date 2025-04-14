@@ -19,7 +19,7 @@ const layout = ({ children }) => {
         onClick={showHideNavbar}>
           <GiHamburgerMenu onClick={showHideNavbar}/>
         </div>
-        <div className="h-screen hidden sm:flex flex-col w-[220px] bg-[var(--primaryColor-500)] px-[20px] py-[50px]  gap-y-[100px] ">
+        <div className="h-screen hidden sm:flex flex-col w-[200px] bg-[var(--primaryColor-500)] px-[20px] py-[50px]  gap-y-[100px] ">
           <SideNavbar></SideNavbar>
         </div>
       </div>
