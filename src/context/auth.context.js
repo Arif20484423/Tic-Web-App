@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true,
         }
       );
+      console.log(response);
       if (response) {
         setUser(response.data.data);
         setLoading(false);
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         console.error("Failed to fetch user details");
       }
     } catch (error) {
+        console.log(response);
       setLoading(false);
       if (error.response) {
         if (error.response.data.redirect) {
