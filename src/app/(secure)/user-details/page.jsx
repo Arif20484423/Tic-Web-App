@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
-import UserDetails from "@/components/user-details/UserDetails";
+import UserDetails from "@/components/secure/user-details/UserDetails";
 const page = () => {
+  console.log(5);
   return <UserDetails />;
 };
 

@@ -1,12 +1,12 @@
 import React from "react";
-import Signin from "@/components/auth/Signin.jsx";
+import ForgetPassword from "@/components/auth/ForgetPassword.jsx";
 
 const page = () => {
   return (
     <>
       {/* <Signin /> */}
 
-      <Signin />
+      <ForgetPassword />
     </>
   );
 };
