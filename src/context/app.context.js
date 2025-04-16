@@ -5,14 +5,14 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
 
   useEffect(()=>{
     console.log(user)
   },[user])
 
   return (
-    <AppContext.Provider value={{ user, setUser, loading }}>
+    <AppContext.Provider value={{ user, setUser }}>
       {children}
     </AppContext.Provider>
   );
