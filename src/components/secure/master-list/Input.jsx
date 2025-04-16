@@ -13,7 +13,7 @@ const Input = ({size, label, priority, type, placeholder = "Enter details", valu
         <>
         <div className={`flex flex-col justify-center items-center ${sizeClasses[size]} `}>
             <div className="flex flex-row w-full justify-between">
-                <span className=" text-[12px] text-[var(--textColor-secondary)] font-medium mb-2">{label}</span>
+                <span className=" text-[12px] text-[var(--textColor-secondary)] font-semibold mb-2">{label}</span>
                 <span className={`text-[10px] ${priorityColor[priority]}`}>{priority}</span>
             </div>
             <input 
@@ -22,7 +22,7 @@ const Input = ({size, label, priority, type, placeholder = "Enter details", valu
             value={value}
             className=" w-full h-[40px] pl-[5px] text-[12px] text-[var(--primaryColor-500)] border border-transparent rounded-[5px] bg-[var(--primaryColor-000)]
             placeholder:text-[12px] placeholder:text-[var(--textColor-disables]
-            focus:placeholder:text-transparent focus:outline-none focus-border focus:border-[var(--primaryColor-500)]"
+            focus:placeholder:text-transparent focus:outline-none focus:border-[1.5px] focus:border-[var(--secondaryColor-300)]"
             onChange={(e) => setValue(e.target.value)}
             ></input>
         </div>
