@@ -1,10 +1,13 @@
 "use client";
-import React, { useState } from "react";
-// import Input from "./Input";
+import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import RadioInput from "./RadioInput";
+import axios from "axios";
+import toast from "react-hot-toast";
 const UserDetails = () => {
+ 
+  const [ids,setIds] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [altEmail, setAltEmail] = useState("");
@@ -17,12 +20,94 @@ const UserDetails = () => {
   const [languages, setLanguages] = useState("");
   const [domain, setDomain] = useState("");
   const [gapYear, setGapYear] = useState("");
-  const [tenth, setTenth] = useState("");
-  const [twelth, setTwelth] = useState("");
-  const [ug, setUg] = useState("");
-  const [pg, setPg] = useState("");
+  const [tenth, setTenth] = useState(0);
+  const [twelth, setTwelth] = useState(0);
+  const [ug, setUg] = useState(0);
+  const [pg, setPg] = useState(0);
   const [resume, setResume] = useState("");
   const [gender,setGender]=useState("");
+console.log('rebndering')
+
+const collectData = async () => {
+  try {
+      const res = await axios(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/details`, { withCredentials: true });
+      const data = res.data.data;
+      console.log(data);
+
+      // Format the date to "yyyy-MM-dd"
+      const formattedDob = data.person.dob ? new Date(data.person.dob).toISOString().split("T")[0] : "";
+
+      setName(data.person.name);
+      setEmail(data.person.email);
+      setAltEmail(data.person.altEmail || "");
+      setPhoneNumber(data.person.contact);
+      setAltPhoneNumber(data.person.altContact || "");
+      setCollegeEmail(data.collegeEmail);
+      setDateOfBirth(formattedDob);  
+      setBatch(data.batch.session);
+      setRollNumber(data.rollNumber);
+      setLanguages(data.languages ? data.languages.join(", ") : "");
+      setDomain(data.domain ? data.domain.join(", ") : "");
+      setGapYear(data.gapYear || "");
+      setTenth(data.tenth || 0);
+      setTwelth(data.twelfth || 0);
+      setUg(data.UG || 0);
+      setPg(data.PG || 0);
+      setResume(data.resume || "");
+      setGender(data.person.gender);
+      setIds(() => [data.person._id, data._id]);
+      console.log(data.person._id, data._id);
+  } catch (error) {
+      console.log(error);
+  }
+};
+   useEffect(() => {
+  
+     collectData();
+   }, [])
+   
+   const handleSubmit = async () => {
+    try {
+      const twelthAsNumber = parseInt(twelth, 10); 
+      const languagesArray = languages.split(",").map((lang) => lang.trim());
+      const DomainArray = domain.split(",").map((dom) => dom.trim());
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/details`,
+        {
+          personid: ids[0],
+          studentid: ids[1],
+          person: {
+            name,
+            dob: dateOfBirth,
+            gender,
+            email,
+            altEmail,
+            contact: phoneNumber,
+            altContact: altPhoneNumber,
+          },
+          student: {
+            rollNumber,
+            collegeEmail,
+            languages:languagesArray,
+            resume,
+            domain:DomainArray,
+            gapYear,
+            tenth,
+            twelfth: twelthAsNumber, // Use the converted value
+            UG: ug,
+            PG: pg,
+          },
+        },
+        { withCredentials: true }
+      );
+      if(res.status == 200){
+        toast.success("Details Updated Successfully");
+      }
+    } catch (error) {
+      toast.error("Error updating details");
+      console.log(error);
+    }
+  };
 
   return (
       <div className="flex flex-col w-full min-w-[200px] py-[25px] gap-y-[20px] items-center">
@@ -94,8 +179,8 @@ const UserDetails = () => {
           size="large"
           label="Gender"
           priority="required"
-          value={collegeEmail}
-          setValue={setCollegeEmail}
+          value={gender}
+          setValue={setGender}
         />
         <Input
           size="large"
@@ -127,7 +212,7 @@ const UserDetails = () => {
         <Input
           size="large"
           label="Domain"
-          priority="optional"
+          priority="required"
           type="text"
           placeholder="Enter Details"
           value={domain}
@@ -167,7 +252,7 @@ const UserDetails = () => {
             size="small"
             label="12th"
             priority="required"
-            type="text"
+            type="number"
             placeholder="Enter Details"
             value={twelth}
             setValue={setTwelth}
@@ -196,11 +281,13 @@ const UserDetails = () => {
         </div>
       </div>
       <div className="flex w-full max-w-[350px] justify-center">
+
         <div className="flex flex-col sm:flex-row w-full max-w-[350px] justify-center items-center gap-[25px]">
           <Button size="medium" variant="filled" children type="button">
+
             Save Changes
           </Button>
-          <Button size="medium" variant="outline" children type="button">
+          <Button size="medium" variant="outline" children type="button" onClick={() => collectData()}>
             Discard Changes
           </Button>
         </div>
