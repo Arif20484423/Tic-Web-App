@@ -1,10 +1,8 @@
 "use client";
-import React from 'react'
-import Input from "@/components/user-details/Input";
+import React from "react";
+import Input from "@/components/secure/user-details/Input";
 import Button from "@/components/auth/Button";
 import { useState } from "react";
-
-
 
 const page = () => {
   const [currPassword, setCurrpassword] = useState("");
@@ -35,7 +33,7 @@ const page = () => {
         value={newPassword}
         setValue={setNewPassword}
       />
-     
+
       <div className="flex flex-col px-15 gap-[30px]">
         <Button size="medium" variant="filled" children type="button">
           Change Password
@@ -46,6 +44,6 @@ const page = () => {
       </div>
     </div>
   );
-}
+};
 
-export default page
+export default page;

@@ -196,7 +196,7 @@ const UserDetails = () => {
         </div>
       </div>
       <div className="flex w-full max-w-[350px] justify-center">
-        <div className="flex flex-col sm:flex-row w-full max-w-[350px] justify-center items-center gap-[15px]">
+        <div className="flex flex-col sm:flex-row w-full max-w-[350px] justify-center items-center gap-[25px]">
           <Button size="medium" variant="filled" children type="button">
             Save Changes
           </Button>
