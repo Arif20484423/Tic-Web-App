@@ -23,8 +23,8 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                         <input
                             type="radio"
                             name="gender"
-                            value="male"
-                            checked={value === "male"}
+                            value="Male"
+                            checked={value === "Male"}
                             className="mr-2"
                             onChange={(e) => setValue(e.target.value)}
                         />
@@ -35,8 +35,8 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                         <input
                             type="radio"
                             name="gender"
-                            value="female"
-                            checked={value === "female"}
+                            value="Female"
+                            checked={value === "Female"}
                             className="mr-2"
                             onChange={(e) => setValue(e.target.value)}
                         />
@@ -46,8 +46,8 @@ const RadioInput = ({ size,label, priority, value, setValue }) => {
                         <input
                             type="radio"
                             name="gender"
-                            value="other"
-                            checked={value === "other"}
+                            value="Other"
+                            checked={value === "Other"}
                             className="mr-2"
                             onChange={(e) => setValue(e.target.value)}
                         />
