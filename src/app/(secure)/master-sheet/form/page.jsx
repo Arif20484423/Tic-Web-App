@@ -1,10 +1,9 @@
 import React from "react";
-import MasterSheet from "@/components/secure/master-sheet/MasterSheet";
+import MasterForm from "@/components/secure/master-sheet/MasterForm";
 const page = () => {
   return (
     <div>
-      
-      <MasterSheet/>
+      <MasterForm/>
     </div>
   );
 };

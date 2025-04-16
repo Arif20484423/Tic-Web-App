@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 
-const MasterListStudent = () => {
+const MasterForm = () => {
   const [company, setCompany] = useState("");
   const [HR, setHR] = useState("");
   const [email, setEmail] = useState("");
@@ -83,4 +83,4 @@ const MasterListStudent = () => {
     </div>
   );
 };
-export default MasterListStudent;
+export default MasterForm;
