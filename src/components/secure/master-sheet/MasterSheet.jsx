@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const MasterSheet = () => {
-  return (
-    <div>MasterSheet</div>
-  )
-}
+  return <div>MasterSheet</div>;
+};
 
-export default MasterSheet
+export default MasterSheet;
