@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-const Button = ({size = "large", variant = "filled", children, type = "button", ...props}) => {
+const Button = ({size = "large", variant = "filled", children, type = "button", onClick, ...props}) => {
     const sizeClasses = {
         large: "w-[215px]",
         medium: "w-[150px]"
@@ -13,6 +13,7 @@ const Button = ({size = "large", variant = "filled", children, type = "button", 
         <>
         <button 
         type = {type}
+        onClick={onClick}
         {...props}
         className={` ${sizeClasses[size]} h-[30px] ${variantClasses[variant]} rounded-[30px] text-[12px] 
         hover:text-[14px]

@@ -1,14 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import InputGroup from "../secure/registration/InputGroup";
+import InputGroup from "./InputGroup";
 import Button from "./Button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const ForgetPassword = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [rollState, setRoll] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
   const inputs = [
     {
       name: "Roll Number",
@@ -16,12 +18,12 @@ const ForgetPassword = () => {
       type: "text",
       setValue: setRoll,
     },
-    
   ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/mail`,
         {
@@ -31,17 +33,25 @@ const ForgetPassword = () => {
           withCredentials: true,
         }
       );
-      
-      setErrorMessage(response.data.message)
+      setLoading(false);
+      toast.success("Link to set password sent to registered college email");
     } catch (error) {
-     
-        console.error("Error during login:", error);
-     
+      setLoading(false);
+      if (error.response) {
+        console.error(
+          "Error during sending mail : ",
+          error.response.data.message
+        );
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Some error occurred");
+        console.error("Error during sending mail : ", error);
+      }
     }
   };
 
   const signinHandler = () => {
-    router.push("/signin")
+    router.push("/signin");
   };
 
   return (
@@ -61,10 +71,10 @@ const ForgetPassword = () => {
             </div>
           </div>
           <InputGroup inputs={inputs} />
-          {errorMessage && (
-            <div className="text-red-500 text-sm">{errorMessage}</div>
-          )}
-          <Button type="submit">Send Email</Button>
+
+          <Button type="submit" loading={loading}>
+            Send Email
+          </Button>
           <div
             className="flex justify-center text-[12px] text-[var(--textColor-primary)] hover:cursor-pointer"
             onClick={signinHandler}

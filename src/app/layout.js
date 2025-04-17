@@ -15,10 +15,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-      <Toaster position="bottom-center" reverseOrder={false}/>
-        <AppProvider>
-        {children}
-        </AppProvider>
+        <Toaster
+          position="bottom-right"
+          containerStyle={{
+            height: "90vh",
+          }}
+          toastOptions={{
+            
+            style: {
+              fontSize: "12px",
+              padding: "20px",
+            },
+          }}
+        />
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

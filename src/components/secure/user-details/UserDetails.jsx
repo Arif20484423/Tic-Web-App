@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "../form-components/Input";
+import Button from "../form-components/Button";
 import RadioInput from "./RadioInput";
 import axios from "axios";
 import toast from "react-hot-toast";
 const UserDetails = () => {
  
+  const [loading, setLoading] = useState(false);
   const [ids,setIds] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const UserDetails = () => {
   const [domain, setDomain] = useState("");
   const [gapYear, setGapYear] = useState("");
   const [tenth, setTenth] = useState(0);
-  const [twelth, setTwelth] = useState(0);
+  const [twelfth, setTwelfth] = useState(0);
   const [ug, setUg] = useState(0);
   const [pg, setPg] = useState(0);
   const [resume, setResume] = useState("");
@@ -30,7 +31,9 @@ console.log('rebndering')
 
 const collectData = async () => {
   try {
+    console.log("gettinbg data")
       const res = await axios(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/details`, { withCredentials: true });
+      console.log(res)
       const data = res.data.data;
       console.log(data);
 
@@ -50,7 +53,7 @@ const collectData = async () => {
       setDomain(data.domain ? data.domain.join(", ") : "");
       setGapYear(data.gapYear || "");
       setTenth(data.tenth || 0);
-      setTwelth(data.twelfth || 0);
+      setTwelfth(data.twelfth || 0);
       setUg(data.UG || 0);
       setPg(data.PG || 0);
       setResume(data.resume || "");
@@ -64,11 +67,15 @@ const collectData = async () => {
    useEffect(() => {
   
      collectData();
+     
    }, [])
    
-   const handleSubmit = async () => {
+   const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    
     try {
-      const twelthAsNumber = parseInt(twelth, 10); 
+      const twelfthAsNumber = parseInt(twelfth, 10); 
       const languagesArray = languages.split(",").map((lang) => lang.trim());
       const DomainArray = domain.split(",").map((dom) => dom.trim());
       const res = await axios.post(
@@ -93,23 +100,32 @@ const collectData = async () => {
             domain:DomainArray,
             gapYear,
             tenth,
-            twelfth: twelthAsNumber, // Use the converted value
+            twelfth: twelfthAsNumber, // Use the converted value
             UG: ug,
             PG: pg,
           },
         },
         { withCredentials: true }
       );
+      setLoading(false);
       if(res.status == 200){
         toast.success("Details Updated Successfully");
       }
     } catch (error) {
-      toast.error("Error updating details");
-      console.log(error);
+      setLoading(false)
+      if(error.response){
+        toast.error(error.response.data.message);
+        console.error("Error updating information : ",error.response.data.message,error.response.data.error)
+      }
+      else{
+        toast.error("Some error occurred");
+        console.error("Some error occurred : ",error)
+      }
     }
   };
 
   return (
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col w-full min-w-[200px] py-[25px] gap-y-[20px] items-center">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-[25px] p-4 w-max  bg-[var(--blackColor-050)] ">
         <Input
@@ -120,6 +136,7 @@ const collectData = async () => {
           placeholder="Enter Details"
           value={name}
           setValue={setName}
+          required={true}
         />
         <Input
           size="large"
@@ -132,7 +149,7 @@ const collectData = async () => {
         />
         <Input
           size="large"
-          label="Alternative Email"
+          label="Alternate Email"
           priority="optional"
           type="email"
           placeholder="Enter Details"
@@ -147,10 +164,11 @@ const collectData = async () => {
           placeholder="Enter Details"
           value={phoneNumber}
           setValue={setPhoneNumber}
+          required={true}
         />
         <Input
           size="large"
-          label="Alternative Phone Number"
+          label="Alternate Phone Number"
           priority="optional"
           type="number"
           placeholder="Enter Details"
@@ -165,6 +183,7 @@ const collectData = async () => {
           placeholder="Enter Details"
           value={collegeEmail}
           setValue={setCollegeEmail}
+          required={true}
         />
         <Input
           size="large"
@@ -174,6 +193,7 @@ const collectData = async () => {
           placeholder="Enter Details"
           value={dateOfBirth}
           setValue={setDateOfBirth}
+          required={true}
         />
         <RadioInput
           size="large"
@@ -181,31 +201,35 @@ const collectData = async () => {
           priority="required"
           value={gender}
           setValue={setGender}
+
         />
         <Input
           size="large"
           label="Batch"
           priority="required"
-          type="number"
+          type="text"
           placeholder="Enter Details"
           value={batch}
           setValue={setBatch}
+          disabled={true}
         />
         <Input
           size="large"
           label="Roll Number"
           priority="required"
-          type="email"
+          type="text"
           placeholder="Enter Details"
           value={rollNumber}
           setValue={setRollNumber}
+          required={true}
+          disabled={true}
         />
         <Input
           size="large"
           label="Languages"
           priority="optional"
           type="text"
-          placeholder="Enter Details"
+          placeholder="Enter languages separated by comma"
           value={languages}
           setValue={setLanguages}
         />
@@ -214,14 +238,16 @@ const collectData = async () => {
           label="Domain"
           priority="required"
           type="text"
-          placeholder="Enter Details"
+          placeholder="Enter domain separated by comma >= 1"
           value={domain}
           setValue={setDomain}
+          required={true}
         />
         <Input
           size="large"
           label="Gap Year"
           priority="required"
+          required={true}
           type="number"
           placeholder="Enter Details"
           value={gapYear}
@@ -236,6 +262,7 @@ const collectData = async () => {
           placeholder="Enter Drive Link"
           value={resume}
           setValue={setResume}
+          required={true}
         />
         {/* <div className="grid grid-cols-2 w-[350px] gap-13"> */}
         <div className="flex flex-col sm:flex-row w-full w-max[350px] justify-between gap-[15px]">
@@ -243,10 +270,11 @@ const collectData = async () => {
             size="small"
             label="10th"
             priority="required"
-            type="text"
+            type="number"
             placeholder="Enter Details"
             value={tenth}
             setValue={setTenth}
+            required={true}
           />
           <Input
             size="small"
@@ -254,8 +282,9 @@ const collectData = async () => {
             priority="required"
             type="number"
             placeholder="Enter Details"
-            value={twelth}
-            setValue={setTwelth}
+            value={twelfth}
+            setValue={setTwelfth}
+            required={true}
           />
         </div>
         {/* <div className="grid grid-cols-2 w-[350px] gap-13"> */}
@@ -263,7 +292,7 @@ const collectData = async () => {
           <Input
             size="small"
             label="UG"
-            priority="required"
+            priority="optional"
             type="text"
             placeholder="Enter Details"
             value={ug}
@@ -272,7 +301,7 @@ const collectData = async () => {
           <Input
             size="small"
             label="PG"
-            priority="required"
+            priority="optional"
             type="text"
             placeholder="Enter Details"
             value={pg}
@@ -283,7 +312,7 @@ const collectData = async () => {
       <div className="flex w-full max-w-[350px] justify-center">
 
         <div className="flex flex-col sm:flex-row w-full max-w-[350px] justify-center items-center gap-[25px]">
-          <Button size="medium" variant="filled" children type="button">
+          <Button size="medium" variant="filled" children type="submit" loading={loading}>
 
             Save Changes
           </Button>
@@ -293,6 +322,7 @@ const collectData = async () => {
         </div>
       </div>
     </div>
+    </form>
   );
 };
 export default UserDetails;

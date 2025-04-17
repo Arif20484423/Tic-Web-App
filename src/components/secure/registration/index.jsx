@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Button from "../../auth/Button";
+import Button from "../form-components/Button";
 import axios from "axios";
-import FileInput from "./FileInput";
-// import Input from "@/components/user-details/Input";
-import Input from "./Input";
+import Input from "../form-components/Input";
+import toast from "react-hot-toast";
 const Registration = () => {
+  const [loading, setLoading] = useState(false);
   const [session, setSession] = useState("");
   const [totalStudent, setTotalStudent] = useState("");
   const [file, setFile] = useState(null);
@@ -15,9 +15,11 @@ const Registration = () => {
   // ];
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-
+    setLoading(true);
     if (!session || !totalStudent || !file) {
       console.error("All fields are required!");
+      toast.error("All fields are required!");
+      setLoading(false);
       return;
     }
 
@@ -34,14 +36,26 @@ const Registration = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          withCredentials:true  
         }
       );
+      toast.success("Batch entry successful");
+      setLoading(false);
       console.log("Batch entry successful:", res.data);
     } catch (error) {
-      console.error(
-        "Error submitting batch entry:",
-        error.response?.data || error.message
-      );
+      setLoading(false);
+      console.log(error);
+      if (error.response) {
+        toast.error(error.response.data.message);
+        console.error(
+          "Error updating batch info : ",
+          error.response.data.message,
+          error.response.data.error
+        );
+      } else {
+        toast.error("Some error occurred");
+        console.error("Error submitting batch entry : ", error);
+      }
     }
   };
 
@@ -66,7 +80,7 @@ const Registration = () => {
               label="Batch"
               priority="required"
               type="text"
-              placeholder="Enter batch"
+              placeholder="20xx-20xx"
               value={session}
               setValue={setSession}
             />
@@ -89,7 +103,7 @@ const Registration = () => {
               setValue={setFile}
             />
           </div>
-          <Button type="submit" onClick={handleSubmit}>
+          <Button type="submit" onClick={handleSubmit} loading={loading}>
             Register
           </Button>
         </form>
