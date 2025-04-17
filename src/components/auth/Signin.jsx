@@ -1,15 +1,16 @@
 "use client";
-import React, { useState } from "react";
-import InputGroup from "../secure/registration/InputGroup";
+import React, { useEffect, useState } from "react";
+import InputGroup from "./InputGroup";
 import Button from "./Button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 const Signin = () => {
+  const [loading, setLoading] = useState(false)
   const router = useRouter();
   const [emailState, setEmail] = useState("");
   const [passwordState, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const inputs = [
     {
       name: "Roll Number",
@@ -28,6 +29,7 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/login`,
         {
@@ -39,13 +41,17 @@ const Signin = () => {
         }
       );
       console.log("Login successful:", response.data);
-      alert("Login successful!");
+      setLoading(false)
+      toast.success("Login successful");
       router.push("/dashboard");
     } catch (error) {
+      setLoading(false);
       if (error.response) {
-        console.error("Error during login:", error.response.data.message);
+        console.error("Error during login : ", error.response.data.message);
+        toast.error(error.response.data.message)
       } else {
-        console.error("Error during login:", error);
+        toast.error("Some error occurred")
+        console.error("Error during login : ", error);
       }
     }
   };
@@ -54,6 +60,7 @@ const Signin = () => {
     router.push("/forget-password")
   };
 
+ 
   return (
     <>
       <div className="*:font-inter">
@@ -70,10 +77,8 @@ const Signin = () => {
             </div>
           </div>
           <InputGroup inputs={inputs} />
-          {errorMessage && (
-            <div className="text-red-500 text-sm">{errorMessage}</div>
-          )}
-          <Button type="submit">Login</Button>
+          
+          <Button type="submit" loading={loading}>Login</Button>
           <div
             className="flex justify-center text-[12px] text-[var(--textColor-primary)] hover:cursor-pointer"
             onClick={forgotPasswordHandler}
@@ -82,6 +87,8 @@ const Signin = () => {
           </div>
         </form>
       </div>
+
+     
     </>
   );
 };
