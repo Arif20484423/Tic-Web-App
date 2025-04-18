@@ -42,7 +42,7 @@ const Signin = () => {
       );
       console.log("Login successful:", response.data);
       setLoading(false)
-      toast.success("Login successful");
+      toast.success("Login successful, redirecting to dashboard");
       router.push("/dashboard");
     } catch (error) {
       setLoading(false);
