@@ -14,6 +14,7 @@ const SideNavbar = () => {
     { id: 2, label: "Information", icon: <IoInformationCircle className="text-white"/>, page: "/user-details" },
     { id: 3, label: "Batch Registration", icon: <IoInformationCircle className="text-white"/>, page: "/batch-registration" },
     { id: 4, label: "Change password", icon: <IoInformationCircle className="text-white"/>, page: "/change-password" },
+    { id: 5, label: "Schedules", icon: <IoInformationCircle className="text-white"/>, page: "/todo" },
     
     // { id: 3, label: "Companies", icon: <RiBuilding2Fill className="text-white"/>, page: "/" },
     // { id: 4, label: "Settings", icon: <IoSettingsSharp className="text-white"/>, page: "/signin" },
