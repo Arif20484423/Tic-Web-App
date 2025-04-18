@@ -7,13 +7,16 @@ import { MdDashboard } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import OptionButton from "./OptionButton";
 const SideNavbar = () => {
-  const [activeOption, setActiveOption] = useState(4);
+  const [activeOption, setActiveOption] = useState(1);
   const router = useRouter();
   const options = [
     { id: 1, label: "Dashboard", icon: <MdDashboard className="text-white"/>, page: "/dashboard" },
     { id: 2, label: "Information", icon: <IoInformationCircle className="text-white"/>, page: "/user-details" },
-    { id: 3, label: "Companies", icon: <RiBuilding2Fill className="text-white"/>, page: "/" },
-    { id: 4, label: "Settings", icon: <IoSettingsSharp className="text-white"/>, page: "/signin" },
+    { id: 3, label: "Batch Registration", icon: <IoInformationCircle className="text-white"/>, page: "/batch-registration" },
+    { id: 4, label: "Change password", icon: <IoInformationCircle className="text-white"/>, page: "/change-password" },
+    
+    // { id: 3, label: "Companies", icon: <RiBuilding2Fill className="text-white"/>, page: "/" },
+    // { id: 4, label: "Settings", icon: <IoSettingsSharp className="text-white"/>, page: "/signin" },
   ];
   return (
     <>

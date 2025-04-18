@@ -36,6 +36,7 @@ const ChangePassword = () => {
       setLoading(false)
       if(error.response){
         if(error.response.data.redirect){
+          toast.error(error.response.data.message)
           router.push(error.response.data.redirectTo)
         }
         else{

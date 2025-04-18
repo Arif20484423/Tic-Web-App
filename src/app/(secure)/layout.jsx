@@ -8,6 +8,7 @@ import styles from "./Component.module.css";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { AppContext } from "@/context/app.context";
+import Loading from "@/components/utils/Loading";
 
 const layout = ({ children }) => {
   const {setUser } = useContext(AppContext);
@@ -43,7 +44,7 @@ const layout = ({ children }) => {
   if (state == 1) {
     return (
       <div className=" flex justify-center items-center h-[100vh]">
-        Loading...
+        <Loading/>
       </div>
     );
   } else if (state == 2) {

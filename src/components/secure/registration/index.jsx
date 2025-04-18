@@ -4,11 +4,13 @@ import Button from "../form-components/Button";
 import axios from "axios";
 import Input from "../form-components/Input";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const Registration = () => {
   const [loading, setLoading] = useState(false);
   const [session, setSession] = useState("");
   const [totalStudent, setTotalStudent] = useState("");
   const [file, setFile] = useState(null);
+  const router = useRouter()
   // const inputs = [
   //     {name: "session", value: session, type: "text", setValue: setSession},
   //     {name: "totalStudent", value: totalStudent, type: "number", setValue: settotalStudent},
@@ -52,6 +54,9 @@ const Registration = () => {
           error.response.data.message,
           error.response.data.error
         );
+        if(error.response.data.redirect){
+          router.push(error.response.data.redirectTo)
+        }
       } else {
         toast.error("Some error occurred");
         console.error("Error submitting batch entry : ", error);
