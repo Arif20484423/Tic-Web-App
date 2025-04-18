@@ -28,8 +28,6 @@ const UserDetails = () => {
   const [pg, setPg] = useState(0);
   const [resume, setResume] = useState("");
   const [gender, setGender] = useState("");
-  console.log("rebndering");
-
   const collectData = async () => {
     try {
       console.log("gettinbg data");
