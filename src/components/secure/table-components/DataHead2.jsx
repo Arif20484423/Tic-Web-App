@@ -10,17 +10,6 @@ const DataHead2 = () => {
   const toggleHandle = () => {
     setSelectAll((prev) => !prev);
   };
-//   const checkBox = (
-//     <td onClick={toggleHandle} className="flex w-max cursor-pointer">
-//       <Data size={sizeClasses.checkBox}>
-//         {selectAll ? (
-//           <MdCheckBox className="text-white" />
-//         ) : (
-//           <MdCheckBoxOutlineBlank className="text-white" />
-//         )}
-//       </Data>
-//     </td>
-//   );
   const properties = [
     { label: "Sl. No.", size: sizes[1] },
     { label: "Reg No", size: sizes[2] },

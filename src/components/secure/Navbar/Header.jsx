@@ -7,7 +7,7 @@ import React, { useContext } from "react";
 const Header = () => {
   const {user } = useContext(AppContext)
   return (
-    <div className="flex justify-between item-center h-auto w-full max-w-[calc(100% - 180px)]  bg-[var(--blackColor-050)] px-[30px] py-[10px]">
+    <div className="flex justify-between item-center h-auto w-[calc(100% - 180px)]  bg-[var(--blackColor-050)] px-[30px] py-[10px]">
       <div id="title">
         <div className="text-[20px] font-bold text-[var(--primaryColor-500)] ">
           Account Information
