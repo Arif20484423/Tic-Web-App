@@ -63,7 +63,7 @@ const layout = ({ children }) => {
           </div>
         </div>
         {/* main content */}
-        <div className="flex-1 w-min-[400px] ">
+        <div className="flex-1 w-min-[400px]">
           {/* Header */}
           <Header />
           {/* body */}

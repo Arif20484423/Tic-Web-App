@@ -47,7 +47,7 @@ const Input = ({ size, label, priority, type="text", placeholder = "Enter detail
                     
                     className="w-full inline h-[40px] pl-[5px] text-[12px] text-[var(--primaryColor-500)] border border-transparent rounded-[5px] bg-[var(--primaryColor-000)]
                     placeholder:text-[12px] placeholder:text-[var(--textColor-disables)]
-                    focus:placeholder:text-transparent focus:outline-none focus:border-[var(--primaryColor-500)] disabled:bg-[var(--blackColor-100)] disabled:text-[var(--blackColor-400)]"
+                    focus:placeholder:text-transparent focus:outline-none focus:border-[var(--secondaryColor-400)] disabled:bg-[var(--blackColor-100)] disabled:text-[var(--blackColor-400)]"
                     onChange={(e) => setValue(e.target.value)}
                 />
             )}
