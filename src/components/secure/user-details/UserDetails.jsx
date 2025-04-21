@@ -4,7 +4,7 @@ import Input from "../form-components/Input";
 import Button from "../form-components/Button";
 import RadioInput from "./RadioInput";
 import axios from "axios";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 const UserDetails = () => {
   const router = useRouter();
