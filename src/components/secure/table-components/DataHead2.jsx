@@ -30,6 +30,7 @@ const DataHead2 = () => {
     { label: "PG", size: sizes[1] },
     { label: "Resume", size: sizes[1] },
   ];
+
   return (
     <tr className="flex flex-row gap-x-1 py-[5px] bg-blue-500">
       <td onClick={toggleHandle} className="flex w-max cursor-pointer">
