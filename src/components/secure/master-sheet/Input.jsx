@@ -20,6 +20,7 @@ const Input = ({size, label, priority, type, placeholder = "Enter details", valu
             type={type}
             placeholder={placeholder}
             value={value}
+            required={priority === "required" ? true : false}
             className=" w-full h-[40px] pl-[5px] text-[12px] text-[var(--primaryColor-500)] border border-transparent rounded-[5px] bg-[var(--primaryColor-000)]
             placeholder:text-[12px] placeholder:text-[var(--textColor-disables]
             focus:placeholder:text-transparent focus:outline-none focus-border focus:border-[var(--primaryColor-500)]"
