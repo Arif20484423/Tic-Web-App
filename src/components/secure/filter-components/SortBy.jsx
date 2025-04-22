@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Option from "./Option";
-const Filter = () => {
+const SortBy = () => {
   const [hide, setHide] = useState(true);
   const ref = useRef(null);
   const toggleHandler = (e) => {
@@ -27,7 +27,7 @@ const Filter = () => {
           onClick={toggleHandler}
           className=" flex flex-row justify-between w-[120px] bg-[var(--blackColor-100)] text-[var(--textColor-primary)] text-[12px] px-4 py-2 rounded-[5px] hover:cursor-pointer"
         >
-          Filter
+          Sort by
           <IoIosArrowDown className="mt-0.5" />
         </button>
 
@@ -44,4 +44,4 @@ const Filter = () => {
     </>
   );
 };
-export default Filter;
+export default SortBy;

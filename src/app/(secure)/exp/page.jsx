@@ -1,6 +1,9 @@
 "use client"
 import React from "react";
 import Table from "@/components/secure/table-components/Table";
+import Filter from "@/components/secure/filter-components/Filter";
+import SortBy from "@/components/secure/filter-components/SortBy";
+import SearchBox from "@/components/secure/filter-components/SearchBox";
 const page = () => {
   const data = [
     [
@@ -29,7 +32,10 @@ const page = () => {
       { label: "Royan Topno", size: "large", editable: true },
     ],
   ];
-  return <Table data={data} />;
+  // return <Table data={data} />;
+  return (
+    <SearchBox />
+  )
 };
 
 export default page;
