@@ -98,25 +98,6 @@ const Today = () => {
           <p className="text-gray-500">No active todos for today.</p>
         )}
       </div>
-
-      {/* Inactive Todos */}
-      <div>
-        <h2 className="text-xl font-bold text-gray-800 mb-4 mx-5">Completed Schedule</h2>
-        {inactiveSchedules.length > 0 ? (
-          inactiveSchedules.map((schedule) => (
-            <Todo
-              key={schedule._id}
-              subject={schedule.subject}
-              description={schedule.subjectDescription}
-              date={schedule.date}
-              status={schedule.status}
-              createdBy={schedule.createdBy.rollNumber}
-            />
-          ))
-        ) : (
-          <p className="text-gray-500">No completed todos for today.</p>
-        )}
-      </div>
     </div>
   );
 };
