@@ -6,7 +6,7 @@ import { Row } from "@/components/secure/table-components/Row";
 const Table = ({ data }) => {
   const [selectAll,setSelectAll] = useState(false);
   return (
-    <div className=" m-1 p-4 w-max ">
+    <div className="  w-max ">
       {data.map((e, index) => {
         {/* console.log(e); */}
         return (
