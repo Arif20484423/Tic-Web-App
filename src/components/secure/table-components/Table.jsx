@@ -29,7 +29,7 @@ const Table = ({ data,downloadData }) => {
   ];
 
   return (
-    <div className=" m-1 p-4 w-max ">
+    <div className="  w-max ">
       <Button onClick={() => jsonToCsvExport({ data: downloadData, headers })} className="m-4">Download</Button>
       {data.map((e, index) => {
         {/* console.log(e); */}
