@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "@/components/secure/table-components/Table";
 import axios from "axios";
+import StudentFilter from "./StudentFilter";
 import toast from "react-hot-toast";
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -96,7 +97,12 @@ const Students = () => {
     }
     fetchStudents();
   }, []);
-  return <Table data={students} />;
+  return (
+    <div className="m-1 px-4 w-max ">
+      <StudentFilter></StudentFilter>
+      <Table data={students} />
+    </div>
+  );
 };
 
 export default Students;
