@@ -5,8 +5,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 const Students = () => {
   const [students, setStudents] = useState([]);
+  const [download, setDownload] = useState();
   function createStudents(data) {
+    const tempDownload = [];
     const tempStudents = [];
+     
     let student = [
       { label: "Name", size: "extraLarge" },
       { label: "Gender", size: "small" },
@@ -68,8 +71,30 @@ const Students = () => {
         { label: languages, size: "large" },
         { label: domain, size: "large" },
       ];
+      tempDownload.push({
+        name: data[i].persondetails[0].name,
+        gender :data[i].persondetails[0].gender,
+        rollNumber: data[i].rollNumber,
+        session: data[i].batchdetails[0].session,
+        resume: data[i].resume,
+        gapYear: data[i].gapYear,
+        PG: data[i].PG,
+        UG: data[i].UG,
+        twelfth: data[i].twelfth,
+        tenth: data[i].tenth,
+        collegeEmail: data[i].collegeEmail,
+        contact: data[i].persondetails[0].contact,
+        altContact: data[i].persondetails[0].altContact,
+        email: data[i].persondetails[0].email,
+        altEmail: data[i].persondetails[0].altEmail,
+        dob: data[i].dob,
+        languages: languages,
+        domain: domain,
+      });
       tempStudents.push(student);
     }
+    setDownload(tempDownload);
+    console.log(tempDownload);
     setStudents(tempStudents);
   }
 
@@ -96,7 +121,7 @@ const Students = () => {
     }
     fetchStudents();
   }, []);
-  return <Table data={students} />;
+  return <Table data={students} downloadData={download}/>;
 };
 
 export default Students;
