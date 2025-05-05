@@ -5,7 +5,6 @@ import SearchBox from "../filter-components/SearchBox";
 import SortBy from "../filter-components/SortBy";
 import FilterInput2 from "../filter-components/FilterInput2";
 import Button from "./Button";
-import Batch from "../batch-components/Batch";
 const StudentFilter = () => {
   const [showFilter, setShowFilter] = useState(false);
   return (
